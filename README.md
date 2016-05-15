@@ -9,11 +9,10 @@ Simple fetch wrapper.
 [![devDependency Status](https://david-dm.org/raphaelameaume/json-fetcher/dev-status.svg)](https://david-dm.org/raphaelameaume/json-fetcher#info=devDependencies)
 
 ## Requirements
-`json-fetcher` doesn't provide any fetch and Promise polyfills. You need to provide your own before using `json-fetcher`. If you are using `json-fetcher` in a browser environment, you can use [Github's fetch polyfill](https://github.com/github/fetch). For a node environment, use [Matthew Andrews polyfill](https://github.com/matthew-andrews/isomorphic-fetch/).
+`json-fetcher` doesn't provide any fetch and Promise polyfills. You need to provide your own before using `json-fetcher`s. If you are using `json-fetcher` in a browser environment, you can use [Github's fetch polyfill](https://github.com/github/fetch). For a node environment, use [Matthew Andrews polyfill](https://github.com/matthew-andrews/isomorphic-fetch/).
 
 ## How to use
 ```npm install json-fetcher --save```
-Then
 ```javascript
 import jsonFetcher from 'json-fetcher';
 
@@ -22,8 +21,9 @@ const api = new jsonFetcher({
 	baseUrl: '/api',
 	headers: ...
 });
+const users = api.get('/users');
 
-// or directly
+// or directly use
 const users = jsonFetcher.get('/api/users');
 ```
 
@@ -38,7 +38,7 @@ jsonFetcher.get('/api/users')
   .catch( error => {
   	console.error(error);
   })
- ``
+```
 
 
 
