@@ -3,13 +3,11 @@ function call(config) {
   const method = config.method;
   const body = JSON.stringify(config.body);
   const options = config.options;
-  const optionalHeaders = config.options.headers || {};
+  const optionalHeaders = options.headers || {};
 
   const headers = {
     'Accept': 'application/json',
-    'Content-Type': 'application/json',
-    ...config.headers,
-    ...optionalHeaders
+    'Content-Type': 'application/json'
   };
 
   const fetchConfig = {
@@ -21,7 +19,7 @@ function call(config) {
   return fetch(url, fetchConfig)
     .then( response => response.json())
     .then( response => {
-      if ( response.status !== 200 || !response.success ) {
+      if ( response.status !== 200 || response.statusCode !== 200 || !response.success ) {
         return Promise.reject(error);
       }
       return response;
